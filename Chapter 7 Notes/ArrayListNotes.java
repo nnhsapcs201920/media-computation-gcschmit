@@ -25,6 +25,7 @@ public class ArrayListNotes
         System.out.println(myList);
         removeEvens(myList);
         System.out.println(myList);
+        System.out.println(sumList(myList));
     }
     
     /**
@@ -95,6 +96,27 @@ public class ArrayListNotes
                 list.remove(i);
             }
         }
+    }
+    
+    public static int sumList(ArrayList<Integer> list)
+    {
+        int sum = 0;
+        
+        /*
+         * Enhanced for loops support iterating through ArrayLists.
+         * 
+         *  Similarly to arrays, you cannot modify the list itself in the context of the
+         *      enhanced for loop. If you do, a ConcurrentModificationException will be
+         *      generated.
+         */
+        for(int value : list)
+        {
+            sum += value;
+            
+            //list.add(7);
+        }
+        
+        return sum;
     }
 }
 
