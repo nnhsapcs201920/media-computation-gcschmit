@@ -26,6 +26,7 @@ public class ArrayListNotes
         System.out.println(myList);
         removeEvens(myList);
         System.out.println(myList);
+        System.out.println(sumList(myList));
     }
     
     /**
@@ -69,9 +70,7 @@ public class ArrayListNotes
         /*
          * The size method returns the number of elements in the list.
          */
-        int size = list.size();
-        
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < list.size(); i++)
         {
             /*
              * The get method returns the value of the element at the specified index.
@@ -85,8 +84,41 @@ public class ArrayListNotes
                  *  All subsequent elements are "shifted left".
                  */
                 list.remove(i);
+                i--;
             }
         }
+    }
+    
+    public static void removeEvensAlt(ArrayList<Integer> list)
+    {
+        for(int i = list.size() - 1; i >= 0; i--)
+        {
+            if(list.get(i) % 2 == 0)
+            {
+                list.remove(i);
+            }
+        }
+    }
+    
+    public static int sumList(ArrayList<Integer> list)
+    {
+        int sum = 0;
+        
+        /*
+         * Enhanced for loops support iterating through ArrayLists.
+         * 
+         *  Similarly to arrays, you cannot modify the list itself in the context of the
+         *      enhanced for loop. If you do, a ConcurrentModificationException will be
+         *      generated.
+         */
+        for(int value : list)
+        {
+            sum += value;
+            
+            list.add(7);
+        }
+        
+        return sum;
     }
 }
 
